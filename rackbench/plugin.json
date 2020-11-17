@@ -1,0 +1,23 @@
+{
+  "slug": "rackbench",
+  "name": "rackbench",
+  "version": "1.0.0",
+  "license": "",
+  "brand": "rackbench",
+  "author": "zeroisnan",
+  "authorEmail": "",
+  "authorUrl": "https://github.com/zeroisnan/daisytmpl",
+  "pluginUrl": "",
+  "manualUrl": "",
+  "sourceUrl": "",
+  "donateUrl": "",
+  "changelogUrl": "",
+  "modules": [
+    {
+      "slug": "k6in3led2out1",
+      "name": "k6in3led2out1",
+      "description": "Prototype module: 6 Knobs, 3 inputs, 2 LEDs, 1 output",
+      "tags": []
+    }
+  ]
+}
