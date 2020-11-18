@@ -1,8 +1,11 @@
 # If RACK_DIR is not defined when calling the Makefile, default to two directories above
 RACK_DIR ?= C:/Users/nico/Rack-SDK
 
+# path to the DaisySP library
+DAISYSP_DIR = ../lib/DaisySP
+
 # FLAGS will be passed to both the C and C++ compiler
-FLAGS +=
+FLAGS += -I$(DAISYSP_DIR) -I$(DAISYSP_DIR)/modules
 CFLAGS +=
 CXXFLAGS +=
 
@@ -12,6 +15,7 @@ LDFLAGS +=
 
 # Add .cpp files to the build
 SOURCES += $(wildcard src/*.cpp)
+SOURCES += $(wildcard $(DAISYSP_DIR)/modules/*.cpp)
 
 # Add files to the ZIP package when running `make dist`
 # The compiled plugin and "plugin.json" are automatically added.
