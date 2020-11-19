@@ -2,7 +2,12 @@
 RACK_DIR ?= C:/Users/nico/Rack-SDK
 
 # path to the DaisySP library
-DAISYSP_DIR = ../lib/DaisySP
+# enter an absolute path, or make the path absolute using $(abspath) such that
+# the lower level VCV Rack makefile can calculate the buil path correctly - not
+# doing so would result in object files getting created outside of build. Final
+# output would still work, but it would leave behind leftovers to be cleaned
+# manually 
+DAISYSP_DIR = $(abspath ../lib/DaisySP)
 
 # FLAGS will be passed to both the C and C++ compiler
 FLAGS += -I$(DAISYSP_DIR) -I$(DAISYSP_DIR)/modules
