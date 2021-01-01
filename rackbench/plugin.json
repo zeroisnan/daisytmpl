@@ -14,9 +14,9 @@
   "changelogUrl": "",
   "modules": [
     {
-      "slug": "k6in3led2out1",
-      "name": "k6in3led2out1",
-      "description": "Prototype module: 6 Knobs, 3 inputs, 2 LEDs, 1 output",
+      "slug": "bench1",
+      "name": "Bench One",
+      "description": "Virtual testbench 1",
       "tags": []
     }
   ]

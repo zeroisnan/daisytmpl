@@ -1,5 +1,9 @@
-# If RACK_DIR is not defined when calling the Makefile, default to two directories above
-RACK_DIR ?= C:/Users/nico/Rack-SDK
+# If RACK_DIR is not defined when calling the Makefile, default to four directories above
+# this can be also modified here for good
+RACK_DIR ?= $(abspath ../../../../Rack-SDK)
+
+# workspace root dir
+WORKSPACE_DIR = $(abspath ../)
 
 # path to the DaisySP library
 # enter an absolute path, or make the path absolute using $(abspath) such that
@@ -10,7 +14,7 @@ RACK_DIR ?= C:/Users/nico/Rack-SDK
 DAISYSP_DIR = $(abspath ../lib/DaisySP)
 
 # FLAGS will be passed to both the C and C++ compiler
-FLAGS += -I$(DAISYSP_DIR) -I$(DAISYSP_DIR)/modules
+FLAGS += -I$(DAISYSP_DIR) -I$(DAISYSP_DIR)/modules -I$(WORKSPACE_DIR)/include
 CFLAGS +=
 CXXFLAGS +=
 
@@ -20,6 +24,8 @@ LDFLAGS +=
 
 # Add .cpp files to the build
 SOURCES += $(wildcard src/*.cpp)
+# all project C++ files except main
+SOURCES += $(filter-out %main.cpp, $(wildcard $(WORKSPACE_DIR)/src/*.cpp))
 SOURCES += $(wildcard $(DAISYSP_DIR)/modules/*.cpp)
 
 # Add files to the ZIP package when running `make dist`

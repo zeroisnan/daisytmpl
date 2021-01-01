@@ -1,40 +1,30 @@
-#include "daisy_seed.h"
-#include "daisysp.h"
+// ----------------------------------------------------------------
+// this is the entry point for the program on the Daisy platform
+// it is structured such that hardware initialization happens here
+// whereas the whole audio processing is contained within audiocore
+//
+// this enables the reuse of audiocore as the processing kernel
+// within rackbench, i.e. we can use VCV Rack to test the behaviour
+// of the audio kernel within the comfort of a host platofrm
+// ----------------------------------------------------------------
 
-using namespace daisysp;
+#include "audiocore.h"
+#include "daisy_seed.h"
+
 using namespace daisy;
 
 static DaisySeed seed;
-static Oscillator osc;
-
-static void AudioCallback(float *in, float *out, size_t size) {
-  float sig;
-  for (size_t i = 0; i < size; i += 2) {
-    sig = osc.Process();
-
-    // left out
-    out[i] = sig;
-
-    // right out
-    out[i + 1] = sig;
-  }
-}
 
 int main(void) {
-  // initialize seed hardware and oscillator daisysp module
+  // initialize seed hardware and daisysp modules
   float sample_rate;
   seed.Configure();
   seed.Init();
   sample_rate = seed.AudioSampleRate();
-  osc.Init(sample_rate);
-
-  // Set parameters for oscillator
-  osc.SetWaveform(osc.WAVE_SIN);
-  osc.SetFreq(440);
-  osc.SetAmp(0.5);
+  AudioCoreInit(sample_rate);
 
   // start callback
-  seed.StartAudio(AudioCallback);
+  seed.StartAudio(AudioCoreKernel);
 
   while (1) {
   }

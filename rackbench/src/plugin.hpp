@@ -7,4 +7,4 @@ using namespace rack;
 extern Plugin* pluginInstance;
 
 // Declare each Model, defined in each module source file
-extern Model* modelK6in3led2out1;
+extern Model* modelBench1;
