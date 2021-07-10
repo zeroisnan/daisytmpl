@@ -24,7 +24,7 @@ void AudioCoreInit(float sample_rate);
  * @param[out] out output audio samples - interleaved stereo
  * @param[in] size size of the in and out vectors
  */
-void AudioCoreKernel(float *in, float *out, size_t size);
+void AudioCoreKernel(const float *in, float *out, size_t size);
 
 #ifdef __cplusplus
 }

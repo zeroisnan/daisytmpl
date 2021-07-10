@@ -49,7 +49,7 @@ void AudioCoreInit(float sample_rate) {
   del.SetDelay(sample_rate * 0.75f);
 }
 
-void AudioCoreKernel(float *in, float *out, size_t size) {
+void AudioCoreKernel(const float *in, float *out, size_t size) {
   for (size_t i = 0; i < size; i += 2) {
     // When the Metro ticks:
     // trigger the envelope to start, and change freq of oscillator.
