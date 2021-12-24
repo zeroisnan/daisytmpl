@@ -11,20 +11,18 @@
 #include "audiocore.h"
 #include "daisy_seed.h"
 
-using namespace daisy;
-
-static DaisySeed seed;
+static daisy::DaisySeed hw;
 
 int main(void) {
   // initialize seed hardware and daisysp modules
   float sample_rate;
-  seed.Configure();
-  seed.Init();
-  sample_rate = seed.AudioSampleRate();
+  hw.Configure();
+  hw.Init();
+  sample_rate = hw.AudioSampleRate();
   AudioCoreInit(sample_rate);
 
   // start callback
-  seed.StartAudio(AudioCoreKernel);
+  hw.StartAudio(AudioCoreKernel);
 
   while (1) {
   }

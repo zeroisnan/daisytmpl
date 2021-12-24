@@ -5,13 +5,16 @@ TARGET = main
 .PHONY: first
 first: libs all
 
+# include files
+C_INCLUDES = -Iinclude -I$(DAISYSP_DIR)/
+# C++ files from this project
+CPP_SOURCES += $(wildcard src/*.cpp)
+# C files - if any
+# C_SOURCES += 
+
 # Daisy libraries Location
 LIBDAISY_DIR = lib/libdaisy
 DAISYSP_DIR = lib/DaisySP
-
-# Sources
-C_INCLUDES = -Iinclude -I$(DAISYSP_DIR)/
-CPP_SOURCES = $(wildcard src/*.cpp)
 
 # Core location, and generic makefile.
 SYSTEM_FILES_DIR = $(LIBDAISY_DIR)/core
