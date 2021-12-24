@@ -7,21 +7,22 @@ This template supports the following features:
 - build libraries as part of the build flow (pre-built libraries also supported)
 - virtual code testbench using VCV Rack
 
+Note that since the creation of this depot, the Daisy team added vscode support to their [Examples depot](https://github.com/electro-smith/DaisyExamples)
+
 ## How to setup
 
-### Directory structure
+DO NOT fork this repo. Clone the template instead, you have two ways of doing this:
+- Using GitHub Templates - follow instructions [here](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template)
+- Cloning locally - follow the instructions below
 
-DO NOT fork this repo. Clone the template instead, with:
+### Cloning locally
 
 ```bash
 git clone --recurse-submodules https://github.com/zeroisnan/daisytmpl.git myproject
 ```
-
-Update the version of the libdaisy and DaisySP submodules:
+If you already cloned, but forgot to include submodules:
 ```bash
-git submodule update 
-git submodule foreach git checkout master 
-git submodule foreach git pull origin master 
+git submodule update --init --recursive
 ```
 
 Disconnect your clone from this depot:
@@ -44,3 +45,12 @@ The following changes are only required if you intend to use the VCV Rack virtua
 https://vcvrack.com/manual/PluginDevelopmentTutorial
 
 VCV Rack must run @ 48kHZ sampling rate as the Daisy sampling rate is hard coded in few places within the example
+
+### Updating submodules
+
+Update the version of the libdaisy and DaisySP submodules:
+```bash
+git submodule update 
+git submodule foreach git checkout master 
+git submodule foreach git pull origin master 
+```
